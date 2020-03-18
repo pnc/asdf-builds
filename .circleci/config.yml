@@ -1,0 +1,15 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: debian/10.3
+    steps:
+      - checkout
+      - run: |
+        git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.7
+        export PATH=~/.asdf/bin:$PATH
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
